@@ -50,6 +50,21 @@
 
     //위와 같이 원본을 훼손시키지 않고 복사본을 만들어야 되는 deep copy가 프론트엔드 개발에서 중요한 이유
     //리액트는 화면을 재랜더링할때 원본을 가지고 있어야지 원본대비 변경점을 인지해서 변경점을 다시 랜더링 처리 (메모리상에서)
+
+    let food = ['chichen', 'BLT', 'salad'];
+
+    const result1 = food.forEach((el, idx) => {
+      console.log(el);
+    })
+    console.log('result1', result1)
+
+    const result2 = food.map((el, idx) => {
+      console.log(el);
+      return el;
+    })
+    result2[0] = 'cake';
+    console.log('result2', result2);
+    console.log('food', food)
   </script>
 </body>
 
