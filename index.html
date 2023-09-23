@@ -9,39 +9,19 @@
 
 <body>
   <script>
-    /*
-      자바스크립트 자료형
-      원시형 자료 (primitive type) : 메모리에 해당값이 물리적으로 담기는 자료형 (값만 담김)
-      문자(string)
-      숫자(number)
-      논리형(boolean)
-      undefined (undefined) : 변수를 만들고 값을 할당하지 않으면 자동으로 undefined할당됨
+    //const : 재할당이 불가능한 변수, 참조형 자료의 경우 재할당이 아닌 기존의 구조는 유지하면서 값 변경
+    //let : 재할당 가능한 변수
 
-      참조형 자료 (reference type) : 메모리에 해당값이 있는 참조위치값이 담기는 자료형 (해당값으로 할수 있는 편의기능까지 같이 참조)
-      배열 (객체 array)
-      객체 (object)
-      null (object) : 일부러 명시적으로 값을 비워둘떄 null
-    */
+    const DB = '엄청중요한 정보';
+    //DB = '쓸데없는 정보';
+    //console.log(DB);
 
-    let text = 'hello';
-    console.dir(text);
-
-    let arr = ['red', 'green', 'blue']
-    console.dir(arr);
-
-    console.log(typeof arr);//자바스크립트에서는 배열이라는 자료형이 없고 배열을 흉내내는 객체
-    console.log(arr[0])
-
-    const abc = 'hobby';
-
-    //es6이후로 객체의 property key를 대괄로 묶으면 변수로 치환이 가능해짐
-    const student = {
-      name: 'david',
-      age: 20,
-      [abc]: 'game'
+    const abc = {
+      name: 'David',
+      age: 20
     }
-
-    console.log(student);
+    abc.name = 'Andy'
+    console.log(abc);
   </script>
 </body>
 
