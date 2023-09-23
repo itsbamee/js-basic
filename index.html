@@ -9,19 +9,23 @@
 
 <body>
   <script>
-    //const : 재할당이 불가능한 변수, 참조형 자료의 경우 재할당이 아닌 기존의 구조는 유지하면서 값 변경
-    //let : 재할당 가능한 변수
+    /*
+      원시형자료 : (Deep copy: 완전복사) - 메모리에 담겨있는 값을 물리적으로 복사
+      참조형자료 : (Shallow copy: 얕은복사) - 메모리에 담겨있는 참조링크만 복사 (원본값은 그대로 있음)
+    */
 
-    const DB = '엄청중요한 정보';
-    //DB = '쓸데없는 정보';
-    //console.log(DB);
+    let text1 = 'hello';
+    let text2 = text1;
+    text2 = 'hello2';
+    console.log(text2);
+    console.log(text1);
+    //원시형자료를 복사하면 복사본을 수정했을때 원본은 그대로 유지가됨 (deep copy, immutable)불변성 유지
 
-    const abc = {
-      name: 'David',
-      age: 20
-    }
-    abc.name = 'Andy'
-    console.log(abc);
+    let colors1 = ['red', 'green', 'blue'];
+    let colors2 = colors1;
+    colors2[0] = 'hotpink';
+    console.log(colors2);
+    console.log(colors1);
   </script>
 </body>
 
