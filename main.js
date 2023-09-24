@@ -1,17 +1,19 @@
-const box = document.querySelector('article');
+const menus = document.querySelectorAll('ul li');
+const boxs = document.querySelectorAll('section article');
 
-//함수를 호출할때 인수를 전달해야 되는 경우 한번더 화살표함수로 wrapping해서 정의형태로 변환
-//box.addEventListener('click', () => changeStyle(box, 'background-color', 'orange'));
-box.addEventListener('click', () => getStyle(box, 'background-color'));
+menus.forEach((menu, idx) => {
+	//모든 그릅요소를 반복돌면서 반복도는 요소와 그 순번을 내부에서 활용
+	menu.addEventListener('click', () => {
+		//현재 반복도는 버튼 클릭했을때 현재의 순번을 activation함수에 활성화시킬 그룹요소와 같이 인수로 전달
+		activation(menus, idx);
+		activation(boxs, idx);
+	});
+});
 
-//미션 - 해당함수를 범용적으로 쓰기위해서 안쪽의 상수값들을 호출할때 파라미터로 전달
-function changeStyle(selector, key, color) {
-	selector.style[key] = color;
-}
-
-//js는 html, js외에는 접근권한이 없으므로 css에 기술되어 있는 스타일값을 자스고 가져오는 것이 불가
-//해결방법: 이미 css에 의해서 스타일이 적용되어 렌더링완료되 화면을 다시 분석해서 연산한후 해당 반환값을 추출
-//css에 적용되어 있는 스타일값을 구할때는 getComputedStyle 활용
-function getStyle(selector, key) {
-	console.log(getComputedStyle(selector)[key]);
+//인수로 활성화시킬 그룹배열, 활성화순번을 파라미터를 통해서 전달받음
+function activation(targetArr, activeIndex) {
+	//첫번째 인수로 받은 그룹요소를 모두 반복돌면서 일단은 초기화
+	targetArr.forEach((el) => el.classList.remove('on'));
+	//그룹요소에서 두번째 인수로 받은 활성화 순번의 요소만 활성화
+	targetArr[activeIndex].classList.add('on');
 }
