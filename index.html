@@ -5,26 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JS- basic</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="main.js"></script>
+  <script type="module" src="sub.js"></script>
 </head>
 
 <body>
+  <article></article>
 
-  <script>
-    //아래 함수처럼 함수내부에서 무거운 로직을 실행하기 전 필수요건이 충족되지 않으면 
-    //불필요한 연산처리를 방지하기 위해서 return으로 함수 강제종료
-    const plus = (n1, n2) => {
-      const typeNum1 = typeof n1;
-      const typeNum2 = typeof n2;
-
-      if (typeNum1 !== 'number' || typeNum2 !== 'number') {
-        return alert('인수로 전달되는 2개의 값을 모두 숫자로 넣어주세요.')
-      }
-      console.log('엄청나게 무거운 로직 연산후 값 리턴')
-      return n1 + n2
-    }
-
-    console.log(plus(3))
-  </script>
 </body>
 
 </html>
