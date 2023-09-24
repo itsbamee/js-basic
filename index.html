@@ -10,16 +10,36 @@
 <body>
 
   <script>
-    //객체 : 여러개의 자료값을 그룹화할때 값을 key: value형식으로 구조화한 형태
-    //객체 propery키값은 문자열로 지정, 따옴표로 지정하지 않아도 자동으로 문자로 변환됨
-    //객체의 property key값에 예약어가 포함되면 문자화되지 않으면서 오류발생
-    const student1 = {
-      name: 'Emily',
+    /*
+    false는 아니지만 false로 취급되는 값들 falsy
+    undefined, null, 0, '', 
+
+    자료값으로 false로 인식되는 값이 들어올때
+    값 || 대체값 (연산자앞에 falsy값이 자동으로 대체값으로 치환)
+
+    자료값으로 아예 false에 대응하는 에러값이 들얼때
+    값 ?? 대체값 (연산자앞에 falsy값이 자동으로 대체값으로 치환)
+
+    옵셔널 체이닝 (Optional Chaining)
+    객체명.메서드() (객체의 값이 있어야지만  해당 메서드를 호출)
+    객체에 있는 메서드 호출시 해당객체에 값을 없을때는 무시하고 있을때에만 선택적으로 호출
+    */
+
+    let productNum;
+    console.log(productNum ?? 'default');
+
+    let obj = null;
+    obj?.info();
+
+    obj = {
+      name: 'David',
       age: 20,
-      'is-female': true
+      info: () => {
+        console.log(`이 학생의 이름은 ${this.name}이고 나이는 ${this.age}입니다.`)
+      }
     }
-    console.log(student1.age);
-    console.log(student1['is-female'])
+
+    obj?.info();
   </script>
 </body>
 
