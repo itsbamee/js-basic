@@ -8,35 +8,18 @@
 </head>
 
 <body>
-  <ul>
-    <li>list1</li>
-    <li>list2</li>
-    <li>list3</li>
-  </ul>
 
   <script>
-    const lis = document.querySelectorAll('ul li');
-    console.log(lis); //그룹돔요소를 유사배열로 반환
-    //유사배열 : 배열과 배열의 모든 기능은 활용할 순 없는 배열과 유사형태의 자료구조
-
-    //forEach: 반복기능만 있음 (유사배열로 반복가능)
-    //map: 반보기능 + 기본 배열 deep copy (순수배열만 반복가능)
-
-    lis.forEach((el) => {
-      console.log(el);
-    })
-
-    /*
-    lis.map((el) => {
-      console.log(el);
-    })
-    */
-
-    const newLis = Array.from(lis); //유사배열을 인수로 받아서 순수배열로 반환
-    console.log(newLis)
-    newLis.map(el => {
-      console.log(el);
-    })
+    //객체 : 여러개의 자료값을 그룹화할때 값을 key: value형식으로 구조화한 형태
+    //객체 propery키값은 문자열로 지정, 따옴표로 지정하지 않아도 자동으로 문자로 변환됨
+    //객체의 property key값에 예약어가 포함되면 문자화되지 않으면서 오류발생
+    const student1 = {
+      name: 'Emily',
+      age: 20,
+      'is-female': true
+    }
+    console.log(student1.age);
+    console.log(student1['is-female'])
   </script>
 </body>
 
