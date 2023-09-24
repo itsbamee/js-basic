@@ -10,36 +10,30 @@
 <body>
 
   <script>
-    /*
-    false는 아니지만 false로 취급되는 값들 falsy
-    undefined, null, 0, '', 
+    //hoisting (위로 끌어올라가짐)
+    //변수를 선언하지 않았음에도 불구하고 해당 변수값을 호출하면 해당 변수가 선언되기도 전에 강제로 전역 스코프에 등록되서 
+    //동작되는 현상
+    const result = plus(2, 3)
+    console.log(result);
 
-    자료값으로 false로 인식되는 값이 들어올때
-    값 || 대체값 (연산자앞에 falsy값이 자동으로 대체값으로 치환)
-
-    자료값으로 아예 false에 대응하는 에러값이 들얼때
-    값 ?? 대체값 (연산자앞에 falsy값이 자동으로 대체값으로 치환)
-
-    옵셔널 체이닝 (Optional Chaining)
-    객체명.메서드() (객체의 값이 있어야지만  해당 메서드를 호출)
-    객체에 있는 메서드 호출시 해당객체에 값을 없을때는 무시하고 있을때에만 선택적으로 호출
-    */
-
-    let productNum;
-    console.log(productNum ?? 'default');
-
-    let obj = null;
-    obj?.info();
-
-    obj = {
-      name: 'David',
-      age: 20,
-      info: function () {
-        console.log(`이학생의 이름은 ${this.name}이고 나이는 ${this.age}입니다.`)
-      }
+    //function으로 지정된 함수는 호출위치가 자유로움 (hoisting)
+    //매개변수 (parameter) : 함수외부에서 내부로 특정값을 전달하기 위한 통로이름
+    //인수 (argument) : 매개변수로 전달되는 값 자체를 인수
+    //return : 함수내부에서 만들어진 값을 함수외부로 내보냄 -> 해당 값을 또다른 구문에서 재활용해야 될떄
+    //return을 특정 값을 외부 내보낼때도 쓰지만 함수내부에서 특정 조건일때 해당함수를 강제 중지할때도 자주 사용
+    function plus(n1, n2) {
+      console.log(n1 + n2);
     }
 
-    obj?.info();
+
+    const minus = (n1, n2) => {
+      console.log(n1 - n2);
+      return n1 - n2;
+    }
+    const result2 = minus(3, 2);
+    console.log(result2);
+
+
   </script>
 </body>
 
