@@ -1,11 +1,9 @@
 const box = document.querySelector('article');
 
-console.dir(box);
+//함수를 호출할때 인수를 전달해야 되는 경우 한번더 화살표함수로 wrapping해서 정의형태로 변환
+box.addEventListener('click', () => changeStyle(box, 'background-color', 'orange'));
 
-//box.onclick = () => console.log('엄청 중요한 작업');
-//box.onclick = () => console.log('쓸데없는 작업');
-
-//돔의 이벤트 property에 직접 핸들러함수를 등록하면 추후에 중요핸들러를 덮어쓰기 할수도 있으므로 비권장
-//addEventListener라는 메서드를 활용해서 이벤트 연결
-box.addEventListener('click', () => console.log('엄청중요한작업'));
-box.addEventListener('click', () => console.log('쓸데없는작업'));
+//미션 - 해당함수를 범용적으로 쓰기위해서 안쪽의 상수값들을 호출할때 파라미터로 전달
+function changeStyle(selector, key, color) {
+	selector.style[key] = color;
+}
