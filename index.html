@@ -10,30 +10,27 @@
 <body>
 
   <script>
-    //hoisting (위로 끌어올라가짐)
-    //변수를 선언하지 않았음에도 불구하고 해당 변수값을 호출하면 해당 변수가 선언되기도 전에 강제로 전역 스코프에 등록되서 
-    //동작되는 현상
-    const result = plus(2, 3)
-    console.log(result);
-
-    //function으로 지정된 함수는 호출위치가 자유로움 (hoisting)
-    //매개변수 (parameter) : 함수외부에서 내부로 특정값을 전달하기 위한 통로이름
-    //인수 (argument) : 매개변수로 전달되는 값 자체를 인수
-    //return : 함수내부에서 만들어진 값을 함수외부로 내보냄 -> 해당 값을 또다른 구문에서 재활용해야 될떄
-    //return을 특정 값을 외부 내보낼때도 쓰지만 함수내부에서 특정 조건일때 해당함수를 강제 중지할때도 자주 사용
-    function plus(n1, n2) {
-      console.log(n1 + n2);
+    const plus = (n1, n2) => {
+      return n1 + n2;
     }
+    //화살표함수에서 중괄호 return생략가능
+    const minus = (n1, n2) => n1 - n2;
+    const info = name => console.log(`내 이름은 ${name}입니다1`);
 
+    /*
+    const makeObject = (name, age, hobby) => {
+      return { studnetName: name, studentAge: age, studentHobby: hobby }
+    }*/
+    //객체를 리턴하고 싶을때에는 다음과 같이 괄호로 묶어서 처리하면 return {}생략가능
+    const makeObject = (name, age, hobby) => ({ studnetName: name, studentAge: age, studentHobby: hobby })
 
-    const minus = (n1, n2) => {
-      console.log(n1 - n2);
-      return n1 - n2;
-    }
-    const result2 = minus(3, 2);
-    console.log(result2);
+    const student1 = makeObject('David', 30, 'game');
+    const student2 = makeObject('Emily', 40, 'reading');
+    console.log(student1);
+    console.log(student2);
 
-
+    console.log(plus(2, 3));
+    console.log(minus(3, 2));
   </script>
 </body>
 
