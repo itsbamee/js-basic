@@ -1,19 +1,21 @@
-//filer: 기존의 배열의 불변성을 유지하면서 특정조건에 부합되는 새로운 배열을 반환
-//filer를 쓰는 실제 사례는 기존 배열값에서 특정 값을 제외한 나머지값을 반환받을 때 주로 사용
+//Dom의 속성값 가져오기
+const link = document.querySelector('a');
+link.getAttribute('target');
+console.log(link.getAttribute('target'));
 
-const colors1 = ['red', 'green', 'blue'];
-const colors2 = colors1.filter((el) => el !== 'red');
-console.log(colors1);
-console.log(colors2);
+//DOM의 속성값 변경하기
+//link.setAttribute('target', '_blank');
 
-const studentDB = [
-	{ name: 'jin', age: 23, hobby: 'cooking' },
-	{ name: 'emliy', age: 28, hobby: 'reading' },
-	{ name: 'john', age: 24 },
-];
+const attrInfo = [{ href: 'http://www.nate.com' }, { target: '_blank' }, { title: '네이트로 이동' }, { text: '네이트' }];
 
-//실제 데이터값에 출력되면 안되는 값(정상적이지 않은 값) 을 제외할 때 주로 쓰임
-const result = studentDB.map((data) => data.hobby);
-console.log(result);
-const result2 = result.filter((data) => data !== undefined);
-console.log(result2);
+//한번에 여러가지 속성을 변경해주는 함수
+const changeAttr = (selector, info) => {
+	info.forEach((data) => {
+		const key = Object.keys(data)[0]; //각 객체의 속성명
+		const value = Object.values(data)[0]; //각 객체의 속성값
+		selector.setAttribute(key, value);
+		if (key === 'text') selector.innerText = value;
+	});
+};
+
+changeAttr(link, attrInfo);
