@@ -1,19 +1,25 @@
-const menus = document.querySelectorAll('ul li');
-const boxs = document.querySelectorAll('section article');
+const section = document.querySelector('section');
+const articles = section.querySelectorAll('article');
+const btn = document.querySelector('.btn');
 
-menus.forEach((menu, idx) => {
-	//모든 그릅요소를 반복돌면서 반복도는 요소와 그 순번을 내부에서 활용
-	menu.addEventListener('click', () => {
-		//현재 반복도는 버튼 클릭했을때 현재의 순번을 activation함수에 활성화시킬 그룹요소와 같이 인수로 전달
-		activation(menus, idx);
-		activation(boxs, idx);
-	});
-});
+//부모요소를 기점으로 직계자식요소를 모두 탐색
+const childEl = section.children;
 
-//인수로 활성화시킬 그룹배열, 활성화순번을 파라미터를 통해서 전달받음
-function activation(targetArr, activeIndex) {
-	//첫번째 인수로 받은 그룹요소를 모두 반복돌면서 일단은 초기화
-	targetArr.forEach((el) => el.classList.remove('on'));
-	//그룹요소에서 두번째 인수로 받은 활성화 순번의 요소만 활성화
-	targetArr[activeIndex].classList.add('on');
-}
+//선택자를 기준으로 직계 부모요소 탐색
+const parentEl = btn.parentElement;
+
+//선택자를 기준으로 조상요소를 탐색
+//const grandParentEl = btn.parentElement.parentElement;
+
+//선택자를 기준으로 제일 가까운 부모요소를 탐색
+const grandParentEl = btn.closest('body');
+
+//선택자를 기준으로 이전 형제요소를 탐색
+const prevEl = btn.previousElementSibling;
+
+//선택자를 기준으로 다음 형제요소 탐색
+const nextEl = btn.nextElementSibling;
+
+//선택자를 기준으로 모든 형제요소 탐색
+const sivlings = btn.parentElement;
+console.log(nextEl);
