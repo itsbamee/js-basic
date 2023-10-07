@@ -1,25 +1,40 @@
+//비구조화할당, 구조분해할당 destructuring
+//배열이나 객체같은 반복적인 값을 한번에 변수로 추출할 때 유용
+
+const colors = ['red', 'green', 'blue'];
+
+/*
+const color1 = colors[0];
+const color2 = colors[1];
+const color3 = colors[2];
+*/
+const [color1, color2, color3] = colors;
+console.log(color2);
+
+//특정 자식요소 dom을 한번에 변수 초기화할때 유용
 const section = document.querySelector('section');
-const articles = section.querySelectorAll('article');
-const btn = document.querySelector('.btn');
+const [h1, div, p] = section.children;
 
-//부모요소를 기점으로 직계자식요소를 모두 탐색
-const childEl = section.children;
+//객체의 각 property를 비구조화할당 가능
+//객체는 property의 key값으로만 변수로 추출
+const student1 = {
+	name: 'daivd',
+	age: 20,
+	address: 'seoul',
+};
 
-//선택자를 기준으로 직계 부모요소 탐색
-const parentEl = btn.parentElement;
+const student2 = {
+	name: 'boram',
+	age: 30,
+};
 
-//선택자를 기준으로 조상요소를 탐색
-//const grandParentEl = btn.parentElement.parentElement;
+const age = 100;
+//key값을 활용해서 값을 추출하되 다른 변수명으로 치환가능 (propery:변수명)
+const { name, age: age2, address } = student1;
+console.log(age2);
 
-//선택자를 기준으로 제일 가까운 부모요소를 탐색
-const grandParentEl = btn.closest('body');
+const inform = ({ name, age, address = '불명' }) => {
+	console.log(`해당학생의 이름은 ${name}이고 나이는 ${age}이며 사는 곳은 ${address}입니다.`);
+};
 
-//선택자를 기준으로 이전 형제요소를 탐색
-const prevEl = btn.previousElementSibling;
-
-//선택자를 기준으로 다음 형제요소 탐색
-const nextEl = btn.nextElementSibling;
-
-//선택자를 기준으로 모든 형제요소 탐색
-const sivlings = btn.parentElement;
-console.log(nextEl);
+inform(student2);
