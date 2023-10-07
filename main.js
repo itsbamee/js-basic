@@ -1,6 +1,26 @@
-const lis = document.querySelectorAll('li');
-console.log(lis);
-//querysSelectorAll로 반환받은 요소들은 유사배열
-//유사배열은 배열은 아니지만 제한적으로 배열기능을 쓸수 있음
-//Array.from() : 유사배열을 순수배열로 변환해서 변환
-Array.from(lis).map((li) => console.log(li));
+//for of : 문자열을 분리, 반복
+const text = 'CHINGKA';
+for (let letter of text) console.log(letter);
+
+//for in : 객체의 key를 반복
+const student = {
+	name: 'lily',
+	age: 25,
+	address: 'sejong',
+	hobby: 'pilates',
+};
+
+for (let key in student) {
+	console.log(key);
+	console.log(student[key]);
+}
+
+//객체의 key, value값을 배열로 반환
+const keys = Object.keys(student);
+console.log(keys);
+
+const values = Object.values(student);
+console.log(values);
+
+//map함수와 조합해서 객체의 value값을 치환
+keys.map((el) => console.log(student[el]));
