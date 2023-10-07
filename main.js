@@ -1,34 +1,28 @@
-//for of : 문자열을 분리, 반복
-const text = 'CHINGKA';
-for (let letter of text) console.log(letter);
+const btns = document.querySelectorAll('li');
 
-//for in : 객체의 key를 반복
-const student = {
-	name: 'lily',
-	age: 25,
-	address: 'sejong',
-	hobby: 'pilates',
-};
+//es5 (화살표함수 안쓰고 function구문씀)
 
-for (let key in student) {
-	console.log(key);
-	console.log(student[key]);
-}
+btns.forEach(function (btn) {
+	console.log('forEach', this);
+	btn.addEventListener(
+		'click',
+		function () {
+			//function문 안쪽에서는 this객체가 생성됨
+			//함수의 호출 위치에 따라서 this값이 변경됨
+			console.log('event', this);
+		}.bind('this') //코드블록 외부에서 내부 this값을 원하는 값으로 강제 고정, 외부 this값으로 내부 this 객체를 고정
+	);
+});
 
-//객체의 key, value값을 배열로 반환
-const keys = Object.keys(student);
-console.log(keys);
-
-const values = Object.values(student);
-console.log(values);
-
-//map함수와 조합해서 객체의 value값을 치환
-keys.map((el) => console.log(student[el]));
-
-//객체의 key, value를 하나의 배열로 반환
-const result = Object.entries(student);
-console.log(result);
-//배열반환값을 다시 비구조화할당으로 추출 (많이 쓰이는 사례는 아님, 외울필요는 없음 이해만!)
-const [[key, value]] = result;
-console.log(key);
-console.log(value);
+//es6
+//화살표함수 안에는 this 객체가 생성되지 않기 때문에 undefined가 찍혀야 됨에도 불구하고 window 객체가 찍힘
+//화살표 함수에서는 코드블록 안쪽에 참조할 this 객체가 없으면 상위 scope의 this 객체를 가져옴 (this가 없으니까 위로위로위로 올라가다 window를 찾음)
+//type = module에서 undefined, defer에서는 window
+/*
+btns.forEach((btn) => {
+	btn.addEventListener('click', () => {
+		//this는 window 참조
+		console.log(this);
+	});
+});
+*/
