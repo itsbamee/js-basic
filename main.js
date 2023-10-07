@@ -1,28 +1,19 @@
-const btns = document.querySelectorAll('li');
+//filer: 기존의 배열의 불변성을 유지하면서 특정조건에 부합되는 새로운 배열을 반환
+//filer를 쓰는 실제 사례는 기존 배열값에서 특정 값을 제외한 나머지값을 반환받을 때 주로 사용
 
-//es5 (화살표함수 안쓰고 function구문씀)
+const colors1 = ['red', 'green', 'blue'];
+const colors2 = colors1.filter((el) => el !== 'red');
+console.log(colors1);
+console.log(colors2);
 
-btns.forEach(function (btn) {
-	console.log('forEach', this);
-	btn.addEventListener(
-		'click',
-		function () {
-			//function문 안쪽에서는 this객체가 생성됨
-			//함수의 호출 위치에 따라서 this값이 변경됨
-			console.log('event', this);
-		}.bind('this') //코드블록 외부에서 내부 this값을 원하는 값으로 강제 고정, 외부 this값으로 내부 this 객체를 고정
-	);
-});
+const studentDB = [
+	{ name: 'jin', age: 23, hobby: 'cooking' },
+	{ name: 'emliy', age: 28, hobby: 'reading' },
+	{ name: 'john', age: 24 },
+];
 
-//es6
-//화살표함수 안에는 this 객체가 생성되지 않기 때문에 undefined가 찍혀야 됨에도 불구하고 window 객체가 찍힘
-//화살표 함수에서는 코드블록 안쪽에 참조할 this 객체가 없으면 상위 scope의 this 객체를 가져옴 (this가 없으니까 위로위로위로 올라가다 window를 찾음)
-//type = module에서 undefined, defer에서는 window
-/*
-btns.forEach((btn) => {
-	btn.addEventListener('click', () => {
-		//this는 window 참조
-		console.log(this);
-	});
-});
-*/
+//실제 데이터값에 출력되면 안되는 값(정상적이지 않은 값) 을 제외할 때 주로 쓰임
+const result = studentDB.map((data) => data.hobby);
+console.log(result);
+const result2 = result.filter((data) => data !== undefined);
+console.log(result2);
